@@ -76,8 +76,12 @@ export default function Example() {
       {/* Right Half: Form Section */}
       {isLogin && (
       <div className="w-1/2 bg-white flex items-center justify-center p-8">
-       
              <form className="w-full max-w-md space-y-4" onSubmit={handleSubmit}>
+             <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+              Y So Long?
+            </h1>
+            <br />
+            <br />
                 <span>This App is not for Public use. Only Authorized users can get permanent links. If you would like permanent access contact me through <a href="https://www.linkedin.com/in/shashwenthm" className="text-sky-400/100">LinkedIn</a>.</span>
            
                 {/* Your form content will go here */}
