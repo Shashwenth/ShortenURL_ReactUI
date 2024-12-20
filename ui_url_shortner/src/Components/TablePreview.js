@@ -33,10 +33,13 @@ export default function TablePreview() {
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" className="px-4 py-3 w-1/2">
+                <th scope="col" className="px-4 py-3 w-1/3">
+                  Description
+                </th>
+                <th scope="col" className="px-4 py-3 w-1/3">
                   LongURL
                 </th>
-                <th scope="col" className="px-4 py-3 w-1/2">
+                <th scope="col" className="px-4 py-3 w-1/3">
                   ShortURL
                 </th>
               </tr>
@@ -44,14 +47,21 @@ export default function TablePreview() {
             <tbody>
               {response.map((item, index) => (
                 <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td className="px-4 py-3 w-1/2 break-all">
+                  <td className="px-4 py-3 w-1/3 break-all">
+                    <div className="whitespace-normal max-w-full">
+                      <a href={item.description} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:underline">
+                        {item.description}
+                      </a>
+                    </div>
+                  </td>
+                  <td className="px-4 py-3 w-1/3 break-all">
                     <div className="whitespace-normal max-w-full">
                       <a href={item.longURL} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:underline">
                         {item.longURL}
                       </a>
                     </div>
                   </td>
-                  <td className="px-4 py-3 w-1/2 break-all">
+                  <td className="px-4 py-3 w-1/3 break-all">
                     <div className="whitespace-normal max-w-full">
                       <a href={item.shortURL} target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:underline">
                         {item.shortURL}

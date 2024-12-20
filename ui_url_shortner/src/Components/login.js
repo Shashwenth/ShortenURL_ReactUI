@@ -18,20 +18,21 @@ export default function Example() {
   //sconst navigate=useNavigate();
   const [isLogin, setisLogin]=useState(true);
   const [isGuest, setGuest]=useState(false);
-
+  const [description, setDescription]=useState("");
 
   const handleURLSubmit = async (event) => {
     event.preventDefault();
     if(isMe){
         console.log("Inside ISME")
         const resp= await axios.post(`${backendURL}`, {
-            url: longURL
+            url: longURL,
+            description: description
         });
         setShortURL(resp.data.url);
         setmyResponse(true);
         setisMe(false);
     }else if(isGuest){
-        const resp= await axios.post(`${backendURL}guest`, {
+        const resp= await axios.post(`${backendURL}/guest`, {
             url: longURL
         });
         setShortURL(resp.data.url);
@@ -197,6 +198,17 @@ export default function Example() {
             myresponse && (
                 <div className="w-full md:w-1/2 bg-white flex items-center justify-center p-8 shadow-lg rounded-lg">
                 <div className="space-y-6"> {/* Added more vertical space between elements */}
+
+                    <div className="flex items-center space-x-6 border-b pb-4">
+                    <label className="text-lg font-medium text-gray-700 w-1/4">Description</label>
+                    <input 
+                        type="text" 
+                        value={description} 
+                        className="p-3 w-full sm:w-3/4 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        readOnly 
+                    /> {/* Increased padding and width */}
+                    </div>
+
                     {/* Long URL Field */}
                     <div className="flex items-center space-x-6 border-b pb-4"> {/* Added border and padding-bottom for separation */}
                     <label className="text-lg font-medium text-gray-700 w-1/4">Long URL</label>
@@ -218,6 +230,7 @@ export default function Example() {
                         readOnly 
                     /> {/* Increased padding and width */}
                     </div>
+
 
                     {/* Optional: Add a "Copy" button next to Short URL */}
                     <div className="flex justify-start space-x-4">
@@ -247,6 +260,18 @@ export default function Example() {
          isMe && (
             <div className="w-1/2 bg-white flex items-center justify-center p-8">
                     <form className="w-full max-w-md space-y-4" onSubmit={handleURLSubmit}>
+                        <div>
+                        <label htmlFor="Description" className="block text-lg font-medium text-gray-700">Description</label>
+                        <input
+                            type="text"
+                            id="Description"
+                            name="Description"
+                            value={description}
+                            onChange={(e)=>setDescription(e.target.value)}
+                            className="mt-2 p-2 w-full border border-gray-300 rounded-md"
+                            placeholder="Enter the Description"
+                        />
+                        </div>
                         <div>
                         <label htmlFor="Longurl" className="block text-lg font-medium text-gray-700">Long URL</label>
                         <input
