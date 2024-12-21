@@ -1,6 +1,6 @@
 ## Overview
 
-This project is a URL Shortener application that takes long URLs and generates shorter, more manageable links. The application is designed to be efficient, scalable, and easy to deploy.
+This project is a URL Shortener application that takes long URLs and generates shorter, more manageable links. The application is designed to be efficient, scalable, and easy to deploy. You can check it out here https://unique-pithivier-303790.netlify.app/
 
 ## Features
 
